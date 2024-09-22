@@ -5,6 +5,7 @@ Summary: Transform text into the NATO phonetic alphabet for oral transmission.
 Requires-Python: >=3.11
 Description-Content-Type: text/markdown
 Requires-Dist: colorama>=0.4.6
+Requires-Dist: rich>=13.8.1
 
 # text2Nato
 
