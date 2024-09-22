@@ -1,0 +1,2 @@
+[console_scripts]
+text2nato = main:main

@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/constants.py
+src/main.py
+src/text2nato.egg-info/PKG-INFO
+src/text2nato.egg-info/SOURCES.txt
+src/text2nato.egg-info/dependency_links.txt
+src/text2nato.egg-info/entry_points.txt
+src/text2nato.egg-info/top_level.txt
