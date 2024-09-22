@@ -24,13 +24,13 @@ def transform_text_to_nato_phonetic(text: str) -> str:
 
     for letter in text:
         upper_letter = letter.upper()
-        # IF letter, white, if symbol red, if number blue
+        # If letter, white, if symbol red, if number blue
         if upper_letter in nato_phonetic_alphabet:
             result.append(Text(f"{nato_phonetic_alphabet[upper_letter]}", style="white"))
         elif upper_letter in phonetic_symbols:
-            result.append(Text(f"{phonetic_symbols[upper_letter]}", style="red"))
+            result.append(Text(f"{phonetic_symbols[upper_letter]}", style="#BB3B1A"))
         elif upper_letter in nato_phonetic_numbers:
-            result.append(Text(f"{nato_phonetic_numbers[upper_letter]}", style="blue"))
+            result.append(Text(f"{nato_phonetic_numbers[upper_letter]}", style="#0165D3"))
             pass
 
     console.print(*result)
