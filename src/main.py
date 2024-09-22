@@ -3,7 +3,11 @@ CLI tool to transform text into the NATO phonetic alphabet for oral transmission
 """
 
 import argparse
-from constants import nato_combined
+from rich.console import Console
+from rich.text import Text
+from six import string_types
+
+from constants import nato_phonetic_alphabet, phonetic_symbols, nato_phonetic_numbers
 
 def transform_text_to_nato_phonetic(text: str) -> str:
     """
@@ -15,7 +19,24 @@ def transform_text_to_nato_phonetic(text: str) -> str:
     Returns:
         str: Text transformed into the NATO phonetic alphabet.
     """
-    return '\n'.join([nato_combined[letter.upper()] for letter in text if letter.upper() in nato_combined])
+    console = Console()
+    result = []
+
+    for letter in text:
+        upper_letter = letter.upper()
+        # IF letter, white, if symbol red, if number blue
+        if upper_letter in nato_phonetic_alphabet:
+            result.append(Text(f"{nato_phonetic_alphabet[upper_letter]}", style="white"))
+        elif upper_letter in phonetic_symbols:
+            result.append(Text(f"{phonetic_symbols[upper_letter]}", style="red"))
+        elif upper_letter in nato_phonetic_numbers:
+            result.append(Text(f"{nato_phonetic_numbers[upper_letter]}", style="blue"))
+            pass
+
+    console.print(*result)
+
+
+
 
 def main():
     # Create the parser
@@ -30,8 +51,6 @@ def main():
     # Transform the text into the NATO phonetic alphabet
     nato_phonetic_text = f"{transform_text_to_nato_phonetic(args.text)}"
 
-    # Print the transformed text
-    print(nato_phonetic_text)
 
 if __name__ == '__main__':
     main()

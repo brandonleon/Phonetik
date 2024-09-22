@@ -1,11 +1,12 @@
 [project]
 name = "text2nato"
-version = "0.2.0"
+version = "0.3.0"
 description = "Transform text into the NATO phonetic alphabet for oral transmission."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "colorama>=0.4.6",
+    "rich>=13.8.1",
 ]
 
 [tool.uv]
@@ -17,7 +18,7 @@ dev-dependencies = [
 text2nato = "main:main"
 
 [tool.bumpversion]
-current_version = "0.2.0"
+current_version = "0.3.0"
 parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
 serialize = ["{major}.{minor}.{patch}"]
 search = "{current_version}"

@@ -76,5 +76,3 @@ nato_phonetic_numbers = {
     "8": "Eight",
     '9': "Niner"
 }
-
-nato_combined = {**nato_phonetic_alphabet, **phonetic_symbols, **nato_phonetic_numbers}
