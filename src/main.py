@@ -5,7 +5,8 @@ from rich.text import Text
 
 from constants import nato_phonetic_alphabet, phonetic_symbols, nato_phonetic_numbers
 
-def get_version(file = 'pyproject.toml') -> str:
+
+def get_version(file="pyproject.toml") -> str:
     """
     Get the version of the application.
 
@@ -15,10 +16,11 @@ def get_version(file = 'pyproject.toml') -> str:
     Returns:
         str: The version of the application.
     """
-    with open(file, 'rb') as f:
+    with open(file, "rb") as f:
         pyproject = tomllib.load(f)
 
-    return pyproject['project']['version']
+    return pyproject["project"]["version"]
+
 
 def get_phonetic_representation(letter: str, plain: bool) -> Text:
     """
@@ -41,6 +43,7 @@ def get_phonetic_representation(letter: str, plain: bool) -> Text:
     else:
         return Text(letter, style="#FFFFFF")
 
+
 def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -> None:
     """
     Transform a text into the NATO phonetic alphabet for oral transmission, one word on each line.
@@ -60,14 +63,32 @@ def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -
     else:
         console.print(*result, sep="\n")
 
+
 def main():
-    parser = argparse.ArgumentParser(description='Transform text into the NATO phonetic alphabet for oral transmission.')
-    parser.add_argument('text', type=str, help='Text to transform into the NATO phonetic alphabet.')
-    parser.add_argument('-p', '--plain', action='store_true', help='Output plain text without formatting.')
-    parser.add_argument('-s', '--single-line', action='store_true', help='Output the text in a single line.')
-    parser.add_argument('-v ', '--version', action='version', version=f'text2nato {get_version()}')
+    parser = argparse.ArgumentParser(
+        description="Transform text into the NATO phonetic alphabet for oral transmission."
+    )
+    parser.add_argument(
+        "text", type=str, help="Text to transform into the NATO phonetic alphabet."
+    )
+    parser.add_argument(
+        "-p",
+        "--plain",
+        action="store_true",
+        help="Output plain text without formatting.",
+    )
+    parser.add_argument(
+        "-s",
+        "--single-line",
+        action="store_true",
+        help="Output the text in a single line.",
+    )
+    parser.add_argument(
+        "-v ", "--version", action="version", version=f"text2nato {get_version()}"
+    )
     args = parser.parse_args()
     transform_text_to_nato_phonetic(args.text, args.plain, args.single_line)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
