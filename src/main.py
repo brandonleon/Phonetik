@@ -63,9 +63,9 @@ def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -
 def main():
     parser = argparse.ArgumentParser(description='Transform text into the NATO phonetic alphabet for oral transmission.')
     parser.add_argument('text', type=str, help='Text to transform into the NATO phonetic alphabet.')
-    parser.add_argument('--plain', action='store_true', help='Output plain text without formatting.')
-    parser.add_argument('--single-line', action='store_true', help='Output the text in a single line.')
-    parser.add_argument('--version', action='version', version=f'text2nato {get_version()}')
+    parser.add_argument('-p', '--plain', action='store_true', help='Output plain text without formatting.')
+    parser.add_argument('-s', '--single-line', action='store_true', help='Output the text in a single line.')
+    parser.add_argument('-v ', '--version', action='version', version=f'text2nato {get_version()}')
     args = parser.parse_args()
     transform_text_to_nato_phonetic(args.text, args.plain, args.single_line)
 
