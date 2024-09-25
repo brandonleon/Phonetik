@@ -19,7 +19,7 @@ def get_version(file="pyproject.toml") -> str:
     with open(file, "rb") as f:
         pyproject = tomllib.load(f)
 
-    return pyproject["project"]["version"]
+    return f'{pyproject["project"]["name"]} {pyproject["project"]["version"]}'
 
 
 def get_phonetic_representation(letter: str, plain: bool) -> Text:
@@ -84,7 +84,7 @@ def main():
         help="Output the text in a single line.",
     )
     parser.add_argument(
-        "-v ", "--version", action="version", version=f"text2nato {get_version()}"
+        "-v ", "--version", action="version", version=get_version()
     )
     args = parser.parse_args()
     transform_text_to_nato_phonetic(args.text, args.plain, args.single_line)
