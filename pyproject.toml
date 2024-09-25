@@ -3,9 +3,9 @@ name = "text2nato"
 version = "0.6.0"
 description = "Transform text into the NATO phonetic alphabet for oral transmission."
 readme = "README.md"
+author = "Brandon Leon"
 requires-python = ">=3.11"
 dependencies = [
-    "colorama>=0.4.6",
     "rich>=13.8.1",
 ]
 
