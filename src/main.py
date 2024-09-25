@@ -1,8 +1,24 @@
 import argparse
+import tomllib
 from rich.console import Console
 from rich.text import Text
 
 from constants import nato_phonetic_alphabet, phonetic_symbols, nato_phonetic_numbers
+
+def get_version(file = 'pyproject.toml') -> str:
+    """
+    Get the version of the application.
+
+    Args:
+        file (str): The path to the pyproject.toml file
+
+    Returns:
+        str: The version of the application.
+    """
+    with open(file, 'rb') as f:
+        pyproject = tomllib.load(f)
+
+    return pyproject['project']['version']
 
 def get_phonetic_representation(letter: str, plain: bool) -> Text:
     """
@@ -49,6 +65,7 @@ def main():
     parser.add_argument('text', type=str, help='Text to transform into the NATO phonetic alphabet.')
     parser.add_argument('--plain', action='store_true', help='Output plain text without formatting.')
     parser.add_argument('--single-line', action='store_true', help='Output the text in a single line.')
+    parser.add_argument('--version', action='version', version=f'text2nato {get_version()}')
     args = parser.parse_args()
     transform_text_to_nato_phonetic(args.text, args.plain, args.single_line)
 
