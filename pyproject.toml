@@ -37,3 +37,15 @@ commit_args = ""
 setup_hooks = []
 pre_commit_hooks = []
 post_commit_hooks = []
+
+
+# Specify the lines to be updated using search and replace
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = "version = \"{current_version}\""
+replace = "version = \"{new_version}\""
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = "current_version = \"{current_version}\""
+replace = "current_version = \"{new_version}\""
