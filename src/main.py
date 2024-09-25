@@ -25,27 +25,32 @@ def get_phonetic_representation(letter: str, plain: bool) -> Text:
     else:
         return Text(letter, style="#FFFFFF")
 
-def transform_text_to_nato_phonetic(text: str, plain: bool) -> None:
+def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -> None:
     """
     Transform a text into the NATO phonetic alphabet for oral transmission, one word on each line.
 
     Args:
         text (str): Text to transform.
         plain (bool): Flag to indicate if the output should be plain text.
+        single_line (bool): Flag to indicate if the output should be in a single line.
 
     Returns:
         None
     """
     console = Console(no_color=plain)
     result = [get_phonetic_representation(letter, plain) for letter in text]
-    console.print(*result, sep="\n")
+    if single_line:
+        console.print(*result, sep=" ")
+    else:
+        console.print(*result, sep="\n")
 
 def main():
     parser = argparse.ArgumentParser(description='Transform text into the NATO phonetic alphabet for oral transmission.')
     parser.add_argument('text', type=str, help='Text to transform into the NATO phonetic alphabet.')
     parser.add_argument('--plain', action='store_true', help='Output plain text without formatting.')
+    parser.add_argument('--single-line', action='store_true', help='Output the text in a single line.')
     args = parser.parse_args()
-    transform_text_to_nato_phonetic(args.text, args.plain)
+    transform_text_to_nato_phonetic(args.text, args.plain, args.single_line)
 
 if __name__ == '__main__':
     main()
