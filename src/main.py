@@ -5,21 +5,7 @@ from rich.text import Text
 
 from constants import nato_phonetic_alphabet, phonetic_symbols, nato_phonetic_numbers
 
-
-def get_version(file="pyproject.toml") -> str:
-    """
-    Get the version of the application.
-
-    Args:
-        file (str): The path to the pyproject.toml file
-
-    Returns:
-        str: The version of the application.
-    """
-    with open(file, "rb") as f:
-        pyproject = tomllib.load(f)
-
-    return f'{pyproject["project"]["name"]} {pyproject["project"]["version"]}'
+__version__ = "1.0.0"
 
 
 def get_phonetic_representation(letter: str, plain: bool) -> Text:
@@ -84,7 +70,11 @@ def main():
         help="Output the text in a single line.",
     )
     parser.add_argument(
-        "-v ", "--version", action="version", version=get_version()
+        "-v ",
+        "--version",
+        action="version",
+        version=__version__,su
+        help="Show the version.",
     )
     args = parser.parse_args()
     transform_text_to_nato_phonetic(args.text, args.plain, args.single_line)
