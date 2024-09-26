@@ -3,9 +3,7 @@ import tomllib
 from rich.console import Console
 from rich.text import Text
 
-from constants import nato_phonetic_alphabet, phonetic_symbols, nato_phonetic_numbers
-
-__version__ = "1.0.0"
+from constants import nato_phonetic_alphabet, phonetic_symbols, nato_phonetic_numbers, __version__
 
 
 def get_phonetic_representation(letter: str, plain: bool) -> Text:
@@ -73,7 +71,7 @@ def main():
         "-v ",
         "--version",
         action="version",
-        version=__version__,su
+        version=__version__,
         help="Show the version.",
     )
     args = parser.parse_args()
