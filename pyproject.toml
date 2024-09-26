@@ -1,6 +1,6 @@
 [project]
 name = "text2nato"
-version = "1.0.0"
+version = "1.0.1"
 description = "Transform text into the NATO phonetic alphabet for oral transmission."
 readme = "README.md"
 authors = [
@@ -20,7 +20,7 @@ dev-dependencies = [
 text2nato = "main:main"
 
 [tool.bumpversion]
-current_version = "1.0.0"
+current_version = "1.0.1"
 parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
 serialize = ["{major}.{minor}.{patch}"]
 regex = false
