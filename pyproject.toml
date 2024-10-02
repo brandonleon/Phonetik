@@ -17,7 +17,7 @@ dev-dependencies = [
 ]
 
 [project.scripts]
-text2nato = "main:main"
+text2nato = "src:main"
 
 [tool.bumpversion]
 current_version = "1.0.1"
