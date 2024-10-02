@@ -2,7 +2,12 @@ import argparse
 from rich.console import Console
 from rich.text import Text
 
-from constants import nato_phonetic_alphabet, phonetic_symbols, nato_phonetic_numbers, __version__
+from constants import (
+    nato_phonetic_alphabet,
+    phonetic_symbols,
+    nato_phonetic_numbers,
+    __version__,
+)
 
 
 def get_phonetic_representation(letter: str, plain: bool) -> Text:
