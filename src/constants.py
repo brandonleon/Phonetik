@@ -1,4 +1,4 @@
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 # Define the NATO phonetic alphabet as a dictionary
 nato_phonetic_alphabet = {
@@ -71,8 +71,8 @@ nato_phonetic_numbers = {
     "1": "One",
     "2": "Two",
     "3": "Tree",
-    "4": "Fower",
-    "5": "Fife",
+    "4": "Four",
+    "5": "Five",
     "6": "Six",
     "7": "Seven",
     "8": "Eight",
