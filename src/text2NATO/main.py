@@ -1,3 +1,4 @@
+import sys
 from importlib.metadata import PackageNotFoundError
 from importlib.metadata import version as get_version
 
@@ -53,12 +54,20 @@ def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -
 # noinspection PyUnusedLocal
 @app.command()
 def main(
-    text: str = typer.Argument(..., help="Text to convert to NATO phonetic alphabet."),
+    text: str = typer.Argument(None, help="Text to convert to NATO phonetic alphabet."),
     plain: bool = typer.Option(False, help="Output plain text without formatting."),
     single_line: bool = typer.Option(False, help="Output the text in a single line."),
     version: bool = typer.Option(None, "--version", "-v", callback=version_callback),
 ):
     """Main function to run the text to NATO phonetic conversion."""
+
+    if text is None:
+        if sys.stdin.isatty():
+            typer.echo("Error: No text provided. Use --help for more information.")
+            raise typer.Exit()
+
+        else:
+            text = sys.stdin.read()
     transform_text_to_nato_phonetic(text, plain, single_line)
 
 
