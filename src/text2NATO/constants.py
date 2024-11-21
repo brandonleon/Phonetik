@@ -1,5 +1,3 @@
-__version__ = "1.2.0"
-
 # Define the NATO phonetic alphabet as a dictionary
 nato_phonetic_alphabet = {
     "A": "Alpha",

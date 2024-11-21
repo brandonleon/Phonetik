@@ -18,51 +18,13 @@ dev-dependencies = [
 ]
 
 [project.scripts]
-text2nato = "main:main"
-
-[tookl.ruff]
+text2nato = "text2NATO.main:app"
+[tool.ruff]
 line-length = 88
 target-version = "py311"
-# Exclude a variety of commonly ignored directories.
-exclude = [
-    ".bzr",
-    ".direnv",
-    ".eggs",
-    ".git",
-    ".git-rewrite",
-    ".hg",
-    ".ipynb_checkpoints",
-    ".mypy_cache",
-    ".nox",
-    ".pants.d",
-    ".pyenv",
-    ".pytest_cache",
-    ".pytype",
-    ".ruff_cache",
-    ".svn",
-    ".tox",
-    ".venv",
-    ".vscode",
-    "__pypackages__",
-    "_build",
-    "buck-out",
-    "build",
-    "dist",
-    "node_modules",
-    "site-packages",
-    "venv",
-]
-
-[tool.ruff.lint]
-# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
-# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
-# McCabe complexity (`C901`) by default.
-select = ["E4", "E7", "E9", "F"]
-ignore = []
-
-# Allow fix for all enabled rules (when `--fix`) is provided.
-fixable = ["ALL"]
-unfixable = []
+# Enable import order checking
+lint.extend-ignore = []
+lint.select = ["I", "F"]  # 'I' for import-related checks, 'F' for formatting-related checks
 
 [tool.bumpversion]
 current_version = "1.2.0"
@@ -87,10 +49,5 @@ post_commit_hooks = []
 # Specify the lines to be updated using search and replace
 [[tool.bumpversion.files]]
 filename = "pyproject.toml"
-search = "version = \"{current_version}\""
-replace = "version = \"{new_version}\""
-
-[[tool.bumpversion.files]]
-filename = "src/constants.py"
-search = "__version__ = \"{current_version}\""
-replace = "__version__ = \"{new_version}\""
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
