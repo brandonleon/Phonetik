@@ -1,1 +1,1 @@
-from src.text2NATO.main import main as main
+from .main import app as app

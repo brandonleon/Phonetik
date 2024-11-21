@@ -54,7 +54,10 @@ def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -
 # noinspection PyUnusedLocal
 @app.command()
 def main(
-    text: str = typer.Argument(None, help="Text to convert to NATO phonetic alphabet."),
+    text: str = typer.Argument(
+        None,
+        help="Text to convert to NATO phonetic alphabet, will read from stdin if not provided.",
+    ),
     plain: bool = typer.Option(False, help="Output plain text without formatting."),
     single_line: bool = typer.Option(False, help="Output the text in a single line."),
     version: bool = typer.Option(None, "--version", "-v", callback=version_callback),
@@ -68,6 +71,7 @@ def main(
 
         else:
             text = sys.stdin.read()
+
     transform_text_to_nato_phonetic(text, plain, single_line)
 
 
