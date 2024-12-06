@@ -1,2 +1,2 @@
-"""text2NATO package."""
+"""Phonetik package."""
 from .main import app as app

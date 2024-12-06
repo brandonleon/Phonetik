@@ -1,4 +1,4 @@
-"""Main module for the text2NATO application."""
+"""Main module for the phonetik application."""
 
 import sys
 from importlib.metadata import PackageNotFoundError
@@ -22,9 +22,9 @@ def version_callback(value: bool):
     if value:
         try:
             version_number = get_version(
-                "text2nato"
+                "phonetik"
             )  # Ensure the package name is correct
-            typer.echo(f"text2nato version {version_number}")
+            typer.echo(f"Phonetik version {version_number}")
         except PackageNotFoundError:
             typer.echo("Version information not found.")
         raise typer.Exit()
