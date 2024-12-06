@@ -12,7 +12,7 @@ from .constants import (
     phonetic_symbols,
 )
 
-app = typer.Typer()
+app = typer.Typer(rich_markup_mode="markdown")
 
 
 def version_callback(value: bool):
@@ -56,13 +56,25 @@ def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -
 def main(
     text: str = typer.Argument(
         None,
-        help="Text to convert to NATO phonetic alphabet, will read from stdin if not provided.",
+        help="Text to convert to NATO phonetic alphabet.",
     ),
-    plain: bool = typer.Option(False, help="Output plain text without formatting."),
+    plain: bool = typer.Option(False, help="Output plain text without colors."),
     single_line: bool = typer.Option(False, help="Output the text in a single line."),
-    version: bool = typer.Option(None, "--version", "-v", callback=version_callback),
+    version: bool = typer.Option(
+        None,
+        "--version",
+        "-v",
+        callback=version_callback,
+        help="Print the version of the application.",
+    ),
 ):
-    """Main function to run the text to NATO phonetic conversion."""
+    """
+        Convert text to NATO phonetic alphabet.
+
+    This command accepts input as a command-line argument or reads from standard input if no argument is provided.
+    If no input is provided and standard input is empty, an error message will be displayed.
+
+    """
 
     if text is None:
         if sys.stdin.isatty():
