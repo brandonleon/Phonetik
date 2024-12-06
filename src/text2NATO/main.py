@@ -1,3 +1,5 @@
+"""Main module for the text2NATO application."""
+
 import sys
 from importlib.metadata import PackageNotFoundError
 from importlib.metadata import version as get_version
@@ -68,14 +70,12 @@ def main(
         help="Print the version of the application.",
     ),
 ):
-    """
-        Convert text to NATO phonetic alphabet.
+    """Convert text to NATO phonetic alphabet.
 
     This command accepts input as a command-line argument or reads from standard input if no argument is provided.
     If no input is provided and standard input is empty, an error message will be displayed.
 
     """
-
     if text is None:
         if sys.stdin.isatty():
             typer.echo("Error: No text provided. Use --help for more information.")
