@@ -1,4 +1,4 @@
-# Define the NATO phonetic alphabet as a dictionary
+"""Define the NATO phonetic alphabet as a dictionary."""
 nato_phonetic_alphabet = {
     "A": "Alpha",
     "B": "Bravo",

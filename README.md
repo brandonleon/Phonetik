@@ -1,4 +1,4 @@
-# text2Nato
+# Phonetik
 
 CLI tool to transform text into the NATO phonetic alphabet for oral transmission.
 
