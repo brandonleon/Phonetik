@@ -1,6 +1,6 @@
 [project]
 name = "Phonetik"
-version = "1.3.0"
+version = "1.3.1"
 description = "Transform text into the NATO phonetic alphabet for oral transmission."
 readme = "README.md"
 authors = [
@@ -27,7 +27,7 @@ lint.extend-ignore = []
 lint.select = ["I", "F"]  # 'I' for import-related checks, 'F' for formatting-related checks
 
 [tool.bumpversion]
-current_version = "1.3.0"
+current_version = "1.3.1"
 parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
 serialize = ["{major}.{minor}.{patch}"]
 regex = false
