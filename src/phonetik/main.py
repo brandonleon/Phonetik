@@ -1,4 +1,4 @@
-"""Main module for the phonetik application."""
+"""Main module for the Phonetik application."""
 
 import sys
 from importlib.metadata import PackageNotFoundError
@@ -30,7 +30,7 @@ def version_callback(value: bool):
         raise typer.Exit()
 
 
-def get_phonetic_representation(letter: str, plain: bool) -> Text:
+def get_phonetic_representation(letter: str) -> Text:
     """Get the phonetic representation of a letter."""
     upper_letter = letter.upper()
     if upper_letter in nato_phonetic_alphabet:
@@ -46,7 +46,8 @@ def get_phonetic_representation(letter: str, plain: bool) -> Text:
 def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -> None:
     """Transform text into the NATO phonetic alphabet."""
     console = Console(no_color=plain)
-    result = [get_phonetic_representation(letter, plain) for letter in text]
+    result = [get_phonetic_representation(letter) for letter in text]
+
     if single_line:
         console.print(*result, sep=" ")
     else:
@@ -80,9 +81,11 @@ def main(
         if sys.stdin.isatty():
             typer.echo("Error: No text provided. Use --help for more information.")
             raise typer.Exit()
-
         else:
-            text = sys.stdin.read()
+            text = sys.stdin.read().strip()
+            if not text:
+                typer.echo("Error: Empty input provided.")
+                raise typer.Exit()
 
     transform_text_to_nato_phonetic(text, plain, single_line)
 
