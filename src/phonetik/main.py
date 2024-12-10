@@ -81,9 +81,11 @@ def main(
         if sys.stdin.isatty():
             typer.echo("Error: No text provided. Use --help for more information.")
             raise typer.Exit()
-
         else:
-            text = sys.stdin.read()
+            text = sys.stdin.read().strip()
+            if not text:
+                typer.echo("Error: Empty input provided.")
+                raise typer.Exit()
 
     transform_text_to_nato_phonetic(text, plain, single_line)
 
