@@ -17,7 +17,7 @@ from .constants import (
 app = typer.Typer(rich_markup_mode="markdown")
 
 
-def version_callback(value: bool):
+def version_callback(value: bool) -> None:
     """Print the version of the application if requested."""
     if value:
         try:
@@ -59,10 +59,14 @@ def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -
 def main(
     text: str = typer.Argument(
         None,
-        help="Text to convert to NATO phonetic alphabet.",
+        help="The text to convert into the NATO phonetic alphabet. Use quotes for phrases.",
     ),
-    plain: bool = typer.Option(False, help="Output plain text without colors."),
-    single_line: bool = typer.Option(False, help="Output the text in a single line."),
+    plain: bool = typer.Option(
+        False, help="Disables colored output for plain terminal compatibility."
+    ),
+    single_line: bool = typer.Option(
+        False, False, help="Displays the phonetic alphabet output in a single line."
+    ),
     version: bool = typer.Option(
         None,
         "--version",
@@ -70,7 +74,7 @@ def main(
         callback=version_callback,
         help="Print the version of the application.",
     ),
-):
+) -> None:
     """Convert text to NATO phonetic alphabet.
 
     This command accepts input as a command-line argument or reads from standard input if no argument is provided.
