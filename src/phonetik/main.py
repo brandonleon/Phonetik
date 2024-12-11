@@ -3,6 +3,7 @@
 import sys
 from importlib.metadata import PackageNotFoundError
 from importlib.metadata import version as get_version
+from typing import Optional
 
 import typer
 from rich.console import Console
@@ -57,7 +58,7 @@ def transform_text_to_nato_phonetic(text: str, plain: bool, single_line: bool) -
 # noinspection PyUnusedLocal
 @app.command()
 def main(
-    text: str = typer.Argument(
+    text: Optional[str] = typer.Argument(
         None,
         help="The text to convert into the NATO phonetic alphabet. Use quotes for phrases.",
     ),
@@ -65,10 +66,10 @@ def main(
         False, help="Disables colored output for plain terminal compatibility."
     ),
     single_line: bool = typer.Option(
-        False, False, help="Displays the phonetic alphabet output in a single line."
+        False, help="Displays the phonetic alphabet output in a single line."
     ),
     version: bool = typer.Option(
-        None,
+        False,
         "--version",
         "-v",
         callback=version_callback,
